@@ -1,0 +1,14 @@
+stages:
+    - build
+build:
+    image: reactnativecommunity/react-native-android
+    stage: build
+    tags:
+      - mobile_local
+    script:
+        - yarn install
+        - cd android && chmod +x gradlew
+        - ./gradlew assembleRelease
+    artifacts:
+        paths:
+            - android/app/build/outputs/
